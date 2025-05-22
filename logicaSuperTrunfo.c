@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 int main() {
+  //declaração de variáveis
   char  C1Estado;
   char  C1Codigo[4];
   char  C1Cidade[20];
@@ -11,7 +12,6 @@ int main() {
   float C1DensidadePop;
   float C1PIBPerCapita;
   float C1SuperPoder;
-
   char  C2Estado;
   char  C2Codigo[4];
   char  C2Cidade[20];
@@ -22,7 +22,9 @@ int main() {
   float C2DensidadePop;
   float C2PIBPerCapita;  
   float C2SuperPoder;
+  int Opcao;
 
+  //dados da carta 1
   printf("Informe os dados da carta 1:\n");
 
   printf("Estado: ");
@@ -50,6 +52,7 @@ int main() {
   C1PIBPerCapita = (float) C1PIB / C1Area;
   C1SuperPoder = (float) C1Populacao + C1Area + C1PIB + C1PontosTur + C1PIBPerCapita + (1.0 / C1DensidadePop);  
 
+  //dados da carta 2
   printf(" \n");
   printf("Informe os dados da carta 2:\n");
 
@@ -78,38 +81,111 @@ int main() {
   C2PIBPerCapita = (float) C2PIB / C2Area;  
   C2SuperPoder = (float) C2Populacao + C2Area + C2PIB + C2PontosTur + C2PIBPerCapita + (1.0 / C2DensidadePop);
 
-  printf(" \n");
-  printf("Carta 1:\n");
-  printf("Estado: %c \n", C1Estado);
-  printf("Código: %s \n", C1Codigo);
-  printf("Cidade: %s \n", C1Cidade);
-  printf("População: %ld \n", C1Populacao);
-  printf("Área: %.2f \n", C1Area);
-  printf("PIB: %.2f \n", C1PIB);
-  printf("Pontos Turísticos: %d \n", C1PontosTur);
-  printf("Densidade Populacional: %.2f \n", C1DensidadePop);
-  printf("PIB Per Capita: %.2f \n", C1PIBPerCapita);
-  printf("Super Poder: %.2f \n", C1SuperPoder);
+  //estrutura do menu seletor de opções
+  printf("\n *** Selecione o atributo que deseja comparar ***\n");
+  printf("1 - Nome\n");
+  printf("2 - População\n");
+  printf("3 - Área\n");
+  printf("4 - PIB\n");
+  printf("5 - Pontos Turísticos\n");
+  printf("6 - Densidade demográfica\n");
+  printf("-------------------------------------------------------\n");
+  printf("Digite sua opção: ");
+  scanf("%d", &Opcao);  
+  printf("-------------------------------------------------------\n");
 
-  printf(" \n");
-  printf("Carta 2:\n");
-  printf("Estado: %c \n", C2Estado);
-  printf("Código: %s \n", C2Codigo);
-  printf("Cidade: %s \n", C2Cidade);
-  printf("População: %ld \n", C2Populacao);
-  printf("Área: %.2f \n", C2Area);
-  printf("PIB: %.2f \n", C2PIB);
-  printf("Pontos Turísticos: %d \n", C2PontosTur);  
-  printf("Densidade Populacional: %.2f \n", C2DensidadePop);
-  printf("PIB Per Capita: %.2f \n", C2PIBPerCapita);  
-  printf("Super Poder: %.2f \n", C2SuperPoder);
-
-  if (C1Populacao > C2Populacao) {
-    printf("Carta 1 Venceu. População: %ld \n", C1Populacao);
-  }
-  else
+  //regras para cada opção selecionada
+  switch (Opcao)
   {
-    printf("Carta 2 Venceu. População: %ld \n", C2Populacao);
+  case 1:
+    printf("Opção selecionada: 1 - Nome \n");
+    printf("Carta 1 - Nome: %s \n", C1Cidade);
+    printf("Carta 2 - Nome: %s \n", C2Cidade);
+    break;
+
+  case 2:
+    printf("Opção selecionada: 2 - População \n");
+    printf("Carta 1 - Nome: %s - População: %ld \n", C1Cidade, C1Populacao);
+    printf("Carta 2 - Nome: %s - População: %ld \n", C2Cidade, C2Populacao);
+
+    if (C1Populacao > C2Populacao) {
+      printf("Carta 1 - VENCEDORA!!!\n");   
+    }
+    else if (C1Populacao < C2Populacao) {
+      printf("Carta 2 - VENCEDORA!!!\n");   
+    }
+    else {
+      printf("Desafio empatado!\n");   
+    }
+    break;    
+
+  case 3:
+    printf("Opção selecionada: 3 - Área \n");
+    printf("Carta 1 - Nome: %s - Área: %.2f \n", C1Cidade, C1Area);
+    printf("Carta 2 - Nome: %s - Área: %.2f \n", C2Cidade, C2Area);
+
+    if (C1Area > C2Area) {
+      printf("Carta 1 - VENCEDORA!!!\n");   
+    }
+    else if (C1Area < C2Area) {
+      printf("Carta 2 - VENCEDORA!!!\n");   
+    }
+    else {
+      printf("Desafio empatado!\n");   
+    }
+    break;      
+    
+  case 4:
+    printf("Opção selecionada: 4 - PIB \n");
+    printf("Carta 1 - Nome: %s - PIB: %.2f \n", C1Cidade, C1PIB);
+    printf("Carta 2 - Nome: %s - PIB: %.2f \n", C2Cidade, C2PIB);
+
+    if (C1PIB > C2PIB) {
+      printf("Carta 1 - VENCEDORA!!!\n");   
+    }
+    else if (C1PIB < C2PIB) {
+      printf("Carta 2 - VENCEDORA!!!\n");   
+    }
+    else {
+      printf("Desafio empatado!\n");   
+    }
+    break;    
+    
+  case 5:
+    printf("Opção selecionada: 5 - Número de Pontos Turísticos \n");
+    printf("Carta 1 - Nome: %s - Número de Pontos Turísticos: %.d \n", C1Cidade, C1PontosTur);
+    printf("Carta 2 - Nome: %s - Número de Pontos Turísticos: %.d \n", C2Cidade, C2PontosTur);
+
+    if (C1PontosTur > C2PontosTur) {
+      printf("Carta 1 - VENCEDORA!!!\n");   
+    }
+    else if (C1PontosTur < C2PontosTur) {
+      printf("Carta 2 - VENCEDORA!!!\n");   
+    }
+    else {
+      printf("Desafio empatado!\n");   
+    }
+    break;  
+    
+  case 6:
+    printf("Opção selecionada: 6 - Densidade demográfica \n");
+    printf("Carta 1 - Nome: %s - Densidade demográfica: %.2f \n", C1Cidade, C1DensidadePop);
+    printf("Carta 2 - Nome: %s - Densidade demográfica: %.2f \n", C2Cidade, C2DensidadePop);
+
+    if (C2DensidadePop > C1DensidadePop) {
+      printf("Carta 1 - VENCEDORA!!!\n");   
+    }
+    else if (C2DensidadePop < C1DensidadePop) {
+      printf("Carta 2 - VENCEDORA!!!\n");   
+    }
+    else {
+      printf("Desafio empatado!\n");   
+    }
+    break;        
+  
+  default:
+    printf("A opção selecionada é inválida\n");
+    break;
   }
 
   return 0;
